@@ -219,6 +219,20 @@ header nav .gnb2 {
         #section_box #section1 .smallimg > li:hover .textinfo .btn_play {
             opacity: 1; visibility: visible;
         }
+
+        
+        #section_box #section1 .smallimg > li.on {
+            transform: scale(1.1); border: 1px solid #00CD3C;
+        }
+        #section_box #section1 .smallimg > li.on .textinfo {
+            display: flex; flex-direction: column;
+            height: 60%; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(3px);
+        }
+        #section_box #section1 .smallimg > li.on .textinfo .btn_play {
+            opacity: 1; visibility: visible;
+        }
+
+
         .mt70 {margin-top: 70px;}
         .btn_box {
             display: flex;
@@ -301,9 +315,9 @@ header nav .gnb2 {
     padding: 200px 0; background: url(../images/part2-3.png) center; background-size: cover; 
     background-attachment: fixed; /* 배경 고정 */
 }
-#section2::before {
+#section2 .overlay {
     content: "";
-    position: absolute; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px);
+    position: absolute; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0, 0, 0, 0); backdrop-filter: blur(10px);
 }
 #section2 .container {
     position: relative;
