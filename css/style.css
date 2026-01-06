@@ -26,16 +26,13 @@ header {
     position: absolute; z-index: 3;
     width: 100%;
 }
-header .topset {}
     header .topset .ticket {
         display: flex; align-items: center; gap: 10px;
         margin-top: 50px; font-size: 1.8rem; color: #fff; padding: 0 2.343vw;
     }
-        header .topset .ticket img {}
     header .topset h1 {
         position: absolute; left: 50%; top: 42px; transform: translateX(-50%);
     }
-        header .topset h1 a {}
         header .topset h1 a img {
             width: 130px;
         }
@@ -109,7 +106,6 @@ header nav .gnb2 {
     border-bottom: 1px solid #fff; box-sizing: border-box;
 }
 
-#section_box {}
 #section_box #section1 {
     padding: 200px 0;
 }
@@ -256,8 +252,8 @@ header nav .gnb2 {
             50% {transform: translateY(-50%) rotate(0deg);}
             100% {transform: translateY(-50%) rotate(-45deg);}
         }
-        
-.cw {}
+
+
 .cw .btn_more {color: #fff; border-color: #fff;}
 .cw .btn_more::before, .btn_box.cw .btn_more::after {background: #fff;}
 
@@ -385,9 +381,6 @@ header nav .gnb2 {
         #section3 .container .content li .article {
             width: 150px; margin-right: 18px; flex-grow: 1;
         }
-            #section3 .container .content li .article a {
-                
-            }
             #section3 .container .content li .article a h3 {
                 font-size: 2.5rem;
             }
@@ -419,17 +412,11 @@ footer .footer_box {
     display: flex; justify-content: center; gap: 54px;
     padding: 95px 319px;
 }
-footer .textbox {
-
-}
 footer h1 img {
     width: 130px; margin-top: 19px;
 }
 footer ul {
     display: flex;
-}
-footer ul li {
-    
 }
 footer ul li a {
     color: #fff; padding: 5px 2.5rem; font-size: 1.6rem;
