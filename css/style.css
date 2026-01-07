@@ -313,7 +313,7 @@ header nav .gnb2 {
 }
 #section2 .overlay {
     content: "";
-    position: absolute; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0, 0, 0, 0); backdrop-filter: blur(10px);
+    position: absolute; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px);
 }
 #section2 .container {
     position: relative;
