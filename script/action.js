@@ -53,3 +53,23 @@ $('.btn_top').click(function(){
     $('html').animate({scrollTop:0}, 800)
 })
 /* TOP 버튼 (1초 동안 올라감) */
+
+
+$('.floating_menu a').click(function(){
+    $('.floating_menu a').removeClass();
+    $(this).addClass('on');
+})
+
+/* $('.floating_menu a').eq(0).click(function(){
+    let s1Top = $('#section1').offset().top;
+    $('html').animate({scrollTop: s1Top});
+})
+$('.floating_menu a').eq(1).click(function(){
+    let s2Top = $('#section2').offset().top;
+    $('html').animate({scrollTop: s2Top});
+}) */
+$('.floating_menu a').click(function(){
+    let aIndex = $(this).index()+1; /* index: 값을 구하는 함수. 여기서는 0, 1, 2 */
+    let sTop = $('#section'+aIndex).offset().top;
+    $('html').animate({scrollTop: sTop});
+})

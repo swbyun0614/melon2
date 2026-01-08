@@ -16,10 +16,10 @@ body {
     display: none;
 }
 :root /* 모든 페이지라는 뜻. body라고 써도 됨 */ {
-    --maincolor1: #81ffa6;
+    --maincolor1: #00CD3C;
 }
 .container {
-    max-width: 1520px; margin: 0 auto; padding: 0px; /* 반응형 때문에 만든 좌우 여백 */
+    max-width: 1520px; margin: 0 auto; padding: 0px 50px; /* 반응형 때문에 만든 좌우 여백 */
 }
 
 header {
@@ -113,11 +113,13 @@ header nav .gnb2 {
         font-size: 3.6rem; text-align: center; margin-bottom: 69px;
     }
     #section_box #section1 .content {
-        display: flex; gap: 75px; justify-content: space-between; align-items: end;
+        display: flex; justify-content: space-between;
+        gap: clamp(40px, 3vw, 75px); /* 최소값, 선호값, 최대값. 반응형을 위해 사용 */
+        align-items: end;
     }
         #section_box #section1 .bigimg {
             position: relative;
-            width: 888px; overflow: hidden;
+            width: 60%; overflow: hidden;
             box-shadow: 3px 3px 5px rgba(0,0,0,0.04);
         }
         #section_box #section1 .bigimg::before {
@@ -178,7 +180,8 @@ header nav .gnb2 {
         }
         #section_box #section1 .smallimg > li {
             position: relative;
-            width: 260px; height: 260px;
+            flex-grow: 1;
+            width: 40%; height: 260px;
             border: 1px solid #dadada; box-shadow: 3px 3px 5px rgba(0,0,0,0.04); transition: 0.2s; overflow: hidden;
         }
         #section_box #section1 .smallimg > li:hover {
@@ -287,7 +290,7 @@ header nav .gnb2 {
 .btn_top:hover::after {animation: btnAni4 0.2s; background: #fff;}
 
 .btn_top:hover {
-    background: #1bdb55; border: 3px solid rgb(0, 0, 0, 0);
+    background: var(--maincolor1); border: 3px solid rgb(0, 0, 0, 0);
 }
 
 @keyframes btnAni3 {
@@ -313,7 +316,7 @@ header nav .gnb2 {
 }
 #section2 .overlay {
     content: "";
-    position: absolute; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0, 0, 0, 0); backdrop-filter: blur(10px);
+    position: absolute; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px);
 }
 #section2 .container {
     position: relative;
@@ -446,6 +449,20 @@ footer span {
     color: #aaa; font-size: 1.5rem; padding-top: 17px; font-weight: 300;
 }
 
+.container {}
+
+.floating_menu {
+    position: fixed; right: 50px; top: 50%; transform: translateY(-50%); gap: 10px;
+    display: flex; flex-direction: column;
+}
+.floating_menu a {
+    display: flex; justify-content: center; align-items: center;
+    width: 50px; height: 50px; font-size: 2.4rem; font-weight: 500; border-radius: 10px; background: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.floating_menu a.on {
+    background: var(--maincolor1); color: #fff;
+}
 
 
 
@@ -469,6 +486,18 @@ footer span {
     header nav .gnb2 {
         position: absolute; top: 53px; right: 1vw;
     }
+
+    #section_box #section1 .content {}
+    #section_box #section1 .content .bigimg {
+        width: 80%;
+    }
+    #section_box #section1 .content .smallimg {
+        width: 20%; gap: 0px;
+    }
+    #section_box #section1 .content .smallimg > li {
+        width: 100%; height: 20%;
+    }
+    
 }
 
 /* 모바일 */
