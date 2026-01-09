@@ -28,7 +28,7 @@ header {
 }
     header .topset .ticket {
         display: flex; align-items: center; gap: 10px;
-        margin-top: 50px; font-size: 1.8rem; color: #fff; padding: 0 2.343vw;
+        margin-top: 50px; font-size: clamp(1.6rem, 1vw, 1.8rem); color: #fff; padding: 0 2.343vw;
     }
     header .topset h1 {
         position: absolute; left: 50%; top: 42px; transform: translateX(-50%);
@@ -434,19 +434,20 @@ header nav .gnb2 {
 
 
 footer {
-    width: 100%; height: 284px; background: #333;
+    width: 100%; background: #333;
 }
 footer .footer_box {
     display: flex; justify-content: center; gap: 54px;
-    padding: 95px 319px;
+    padding: 4.9vh 16.6vw;
 }
 footer h1 img {
     width: 130px; margin-top: 19px;
 }
 footer ul {
-    display: flex;
+    display: flex; flex-wrap: wrap;
 }
 footer ul li a {
+    display: block;
     color: #fff; padding: 5px 2.5rem; font-size: 1.6rem;
 }
 footer ul li a:hover {
@@ -522,6 +523,37 @@ footer span {
     #section2 .container .textbox {
         display: flex; justify-content: space-between; align-items: center;
     }
+
+    footer {
+        width: 100%; height: 442px; background: #333;
+    }
+    footer .footer_box {
+        display: block;
+        padding: 60px 20px;
+    }
+        footer h1 {
+            display: flex; justify-content: center;
+        }
+        footer h1 img {
+            width: 90px; margin-top: 0; margin-bottom: 30px;
+        }
+        footer ul {
+            display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
+        }
+        footer ul li a {
+            display: block;
+            color: #fff; padding: 5px 0rem; font-size: 1.4rem;
+        }
+        footer ul li a:hover {
+            text-decoration: underline; font-weight: 500;
+        }
+        footer ul li:first-child a {
+            padding: 5px 0 5px 0;
+        }
+        footer span {
+            display: block;
+            color: #aaa; font-size: 1.4rem; padding-top: 17px; font-weight: 300; text-align: center;
+        }
 }
 
 /* 모바일 */
@@ -534,6 +566,8 @@ footer span {
     }
 
     .container {padding: 0 20px;}
+
+    header .container .topset {}
 
     header nav .mo a img {
         width: 130px;

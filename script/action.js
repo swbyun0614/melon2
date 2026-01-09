@@ -1,3 +1,14 @@
+$('header').load('/include/header.html', function(){
+    gnbAction();
+    
+    $('.hamburger').click(function(){
+        $('.hamburger').toggleClass('on')
+        $('header nav').toggleClass('on')
+    })
+})
+/* 이미 html이 모두 로드가 끝났기 때문에 js 실행이 안됨. 그래서 js를 실행하라는 코드를 따로 넣음 */
+
+
 function gnbAction(){
     let winW = $(window).width()
     /* window = 한 화면, document = 전체 화면(스크롤 영역 포함) */
@@ -31,12 +42,6 @@ $(window).resize(function(){
     gnbAction()
 })
 /* window 사이즈를 구해서 변수에 담은 다음, 변수의 크기가 768 이상일 때 실행되도록 만듦 (미디어쿼리와 같은 원리) */
-
-
-$('.hamburger').click(function(){
-    $('.hamburger').toggleClass('on')
-    $('header nav').toggleClass('on')
-})
 
 
 $('.smallimg li').mouseenter(function(){
