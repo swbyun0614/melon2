@@ -54,7 +54,7 @@ $('.btn_top').click(function(){
 })
 /* TOP 버튼 (1초 동안 올라감) */
 
-
+$('.floating_menu a').removeClass();
 $('.floating_menu a').click(function(){
     $('.floating_menu a').removeClass();
     $(this).addClass('on');
