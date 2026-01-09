@@ -46,6 +46,9 @@ $('.smallimg li').mouseenter(function(){
     $('.bigimg .btn_play').hide();
     $('.bigimg .bigimg1').attr('src',smallimg);
     $('.bigimg .bigimg2 img').attr('src',smallimg);
+
+    return false;
+    /* a 태그의 속성을 거짓으로 돌려준다 */
 })
 
 

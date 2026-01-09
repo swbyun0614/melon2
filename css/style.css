@@ -328,7 +328,7 @@ header nav .gnb2 {
         padding-top: 62px;
     }
         #section2 .container .textbox strong {
-            color: #fff; font-size: 5rem;
+            color: #fff; font-size: clamp(4rem, 4vw, 5rem);
         }
         #section2 .container .textbox p {
             color: #fff; font-size: 1.6rem; font-weight: 400; margin: 17px 0 50px 0;
@@ -498,6 +498,10 @@ footer span {
         position: absolute; top: 53px; right: 1vw;
     }
 
+    #section_box #section1 {padding: 150px 0;}
+    #section_box #section2 {padding: 150px 0;}
+    #section_box #section3 {padding: 150px 0;}
+
     #section_box #section1 .content {}
     #section_box #section1 .content .bigimg {
         width: 80%;
@@ -615,6 +619,11 @@ footer span {
     ul.smallimg .textinfo {
         display: none;
     }
+
+    #section_box #section1 {padding: 100px 0;}
+    #section_box #section2 {padding: 100px 0;}
+    #section_box #section3 {padding: 100px 0;}
+
     #section_box #section1 .bigimg::before {
         width: 150%; left: 0; transform: rotate(-10deg);
     }
@@ -624,6 +633,11 @@ footer span {
     }
     #section_box #section1 .bigimg .textinfo .info {
         display: none;
+    }
+
+    #section2 .container .textbox {
+        gap: 100px;
+        word-break: keep-all; /* 띄어쓰기 기준으로 잘라줌 */
     }
 
     #section3 .container .content {
