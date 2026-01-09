@@ -44,40 +44,92 @@ $(window).resize(function(){
 /* window 사이즈를 구해서 변수에 담은 다음, 변수의 크기가 768 이상일 때 실행되도록 만듦 (미디어쿼리와 같은 원리) */
 
 
-$('.smallimg li').mouseenter(function(){
-    let h3Text = $(this).find('.textinfo').html();
-    let smallimg = $(this).find('img').attr('src');
-    $('.bigimg .textinfo').html(h3Text);
-    $('.bigimg .btn_play').hide();
-    $('.bigimg .bigimg1').attr('src',smallimg);
-    $('.bigimg .bigimg2 img').attr('src',smallimg);
+$('.smallimg > li').mouseenter(function(){
+    rollingNumber = $(this).index()
+
+    autoRefactoring()
+
+    $('.smallimg > li').removeClass('on')
+    clearInterval(autoRolling)
 
     return false;
     /* a 태그의 속성을 거짓으로 돌려준다 */
 })
+$('.smallimg > li').mouseleave(function(){
+    autoRolling = setInterval(imgRolling, 2000)
+})
+
+
+// setTimeout(function(){}, 3000)
+// 예약을 거는 함수
+
+// Section1 자동 롤링
+let rollingNumber = 0
+let smallimgLength = $('.smallimg > li').length
+// 얘는 0이 아니라 1부터 셈...
+$('.smallimg > li').eq(rollingNumber).addClass('on')
+
+let autoRolling = setInterval(imgRolling, 2000)
+
+function imgRolling(){
+    rollingNumber++
+    if(rollingNumber > smallimgLength - 1){
+        rollingNumber = 0
+    }
+
+    $('.smallimg > li').eq(rollingNumber).addClass('on').siblings().removeClass('on')
+    // siblings: 형제 태그
+    autoRefactoring()
+}
+
+function autoRefactoring(){
+    let h3Text = $('.smallimg > li').eq(rollingNumber).find('.textinfo').html();
+    let smallimg = $('.smallimg > li').eq(rollingNumber).find('img').attr('src');
+    $('.bigimg .textinfo').html(h3Text);
+    $('.bigimg .btn_play').hide();
+    $('.bigimg .bigimg1').attr('src',smallimg);
+    $('.bigimg .bigimg2 img').attr('src',smallimg);
+}
+
+
+$(window).scroll(function(){
+    let scrT = $(window).scrollTop();
+    let sec1Top = $('#section1').offset().top;
+    let sec2Top = $('#section2').offset().top;
+    let sec3Top = $('#section3').offset().top;
+    let winH = $(window).height();
+    let opa = (scrT-sec2Top+(winH*0.8))*0.005;
+    opa = Math.min(opa,0.7)
+
+    if(scrT > sec2Top - winH*0.8){
+        $('#section2 .overlay').css({ background: 'rgba(0,0,0,'+opa+')'})
+    
+    }
+    
+    if(scrT >= sec1Top){
+        $('.floating_menu a').eq(0).addClass('on').siblings().removeClass('on')
+    } else {
+        $('.floating_menu a').removeClass('on')
+    }
+    if(scrT >= sec2Top){
+        $('.floating_menu a').eq(1).addClass('on').siblings().removeClass('on')
+    }
+    if(scrT >= sec3Top){
+        $('.floating_menu a').eq(2).addClass('on').siblings().removeClass('on')
+    }
+});
 
 
 $('.btn_top').click(function(){
-    $('html').animate({scrollTop:0}, 800)
-})
+    $('html, body').animate({scrollTop:0}, 800)
+    // 보통 html과 body를 같이 씀
+});
 /* TOP 버튼 (1초 동안 올라감) */
 
-$('.floating_menu a').removeClass();
-$('.floating_menu a').click(function(){
-    $('.floating_menu a').removeClass();
-    $(this).addClass('on');
-})
-
-/* $('.floating_menu a').eq(0).click(function(){
-    let s1Top = $('#section1').offset().top;
-    $('html').animate({scrollTop: s1Top});
-})
-$('.floating_menu a').eq(1).click(function(){
-    let s2Top = $('#section2').offset().top;
-    $('html').animate({scrollTop: s2Top});
-}) */
 $('.floating_menu a').click(function(){
     let aIndex = $(this).index()+1; /* index: 값을 구하는 함수. 여기서는 0, 1, 2 */
     let sTop = $('#section'+aIndex).offset().top;
+
+    $('.floating_menu a').removeClass();
     $('html').animate({scrollTop: sTop});
-})
+});
