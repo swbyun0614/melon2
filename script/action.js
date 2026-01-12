@@ -98,12 +98,14 @@ $(window).scroll(function(){
     let sec2Top = $('#section2').offset().top;
     let sec3Top = $('#section3').offset().top;
     let winH = $(window).height();
-    let opa = (scrT-sec2Top+(winH*0.8))*0.005;
+    let opa = (scrT-sec2Top+(winH*0.7))*0.002;
+    /* 0.7: 섹션 2가 화면 하단에서 70% 정도 올라왔을 때부터 투명도 값이 증가, 0.002: 숫자가 너무 빨리 커지지 않도록 속도를 조절 */
     opa = Math.min(opa,0.7)
+    /* 계산된 값이 아무리 커져도 0.7(불투명도 70%)을 넘지 않도록 제한 */
 
     if(scrT > sec2Top - winH*0.8){
         $('#section2 .overlay').css({ background: 'rgba(0,0,0,'+opa+')'})
-    
+        /* 스크롤 위치가 섹션 2가 보이기 직전(화면 높이의 80% 지점)을 지나면, 미리 계산한 opa 값을 사용해 섹션 2 내부의 .overlay 투명도를 조절 (opa*100%) */
     }
     
     if(scrT >= sec1Top){
@@ -133,3 +135,16 @@ $('.floating_menu a').click(function(){
     $('.floating_menu a').removeClass();
     $('html').animate({scrollTop: sTop});
 });
+
+
+$('.btn_view_pw').click(function(){
+    let $pwInput = $(this).siblings('input');
+    /* $pwInput은 클릭한 것의 형제 'input' */
+    if($pwInput.attr('type') === 'password'){
+        $pwInput.attr('type','text');
+        $(this).find('img').attr('src','images/visibility.svg');
+    } else {
+        $pwInput.attr('type','password');
+        $(this).find('img').attr('src','images/visibility_off.svg');
+    }
+})

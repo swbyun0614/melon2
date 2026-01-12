@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melon</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="sub"></header>
+    <!-- header.html 파일을 따로 만들어서 js로 실행. 한꺼번에 수정 가능 -->
+
+    <!-- id는 큰 레이아웃에만 사용 (프로그래머들이 사용해서) 개인 습관... 쓰지 말라곤 안 하지만 회사에서 지양하라고 할 순 있음 -->
+    <div id="hero_sub">
+        
+    </div>
+
+    <div id="section_box_sub" class="login_page">
+        <!-- 구분용으로 class를 정해두면 좋음 (css가 겹치지 않기 위해서) -->
+        <div class="container">
+            <h2>로그인</h2>
+            <form action="index.html" method="get">
+                <!-- action: 정보를 넘길 페이지, method: 서버 전달 방식 -->
+                <div class="input_wrap">
+                    <ul class="input_idpw">
+                        <li>
+                            <input type="text" placeholder="아이디를 입력해주세요" name="id" required> <!-- required: 필수 입력값 -->
+                        </li>
+                        <li>
+                            <input type="password" placeholder="비밀번호를 입력해주세요" name="pw" required>
+                            <div class="btn_view_pw">
+                                <img src="images/visibility_off.svg" alt="">
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="check_wrap">
+                        <input type="checkbox" id="remember_id" name="remember_id">
+                        
+                        <label for="remember_id">
+                            <span class="checkbox_custom"></span>
+                            아이디 기억하기
+                        </label>
+                        <!-- label로 텍스트를 다른 태그와 연결, label의 for 안에 태그의 id를 연결 -->
+                    </div>
+                    <div class="btns_box">
+                        <button type="submit">확인</button>
+                        <!-- button의 기본 type은 submit(서버로 전송) -->
+                    </div>
+                    <div class="link_box">
+                        <a href="#">회원가입 하기</a>
+                        <a href="#">비밀번호 찾기</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer_box">
+            <h1><img src="images/img_melon_logo@3x.png" alt=""></h1>
+            <div class="textbox">
+                <ul>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">위치기반서비스이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">청소년보호정책</a></li>
+                    <li><a href="#">제휴/프로모션문의</a></li>
+                    <li><a href="#">이메일주소무단수집거부</a></li>
+                    <li><a href="#">파트너센터</a></li>
+                </ul>
+                <span>
+                    (주)카카오엔터테인먼트 경기도 성남시 분당구 판교역로 235, 에이치스퀘어 N동 8, 9, 10층 | 공동대표이사 : 권기수, 장윤중<br>
+                    사업자등록번호 : 220-88-02594 | 통신판매업신고번호 : 2018-성남분당B-0004 사업자정보확인<br>
+                    문의전화 : 1566-7727 (평일 09:00-18:00, 유료) | 이메일 : melon_info@kakaoent.com | 호스팅서비스사업자 : (주)카카오엔터테인먼트 | © Kakao Entertainment Corp.
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating_menu">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+    </div>
+
+    <script src="script/jquery-3.7.1.min.js"></script>
+    <script src="script/action.js"></script>
+</body>
+</html>

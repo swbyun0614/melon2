@@ -22,13 +22,19 @@ body {
     max-width: 1520px; margin: 0 auto; padding: 0px 50px; /* 반응형 때문에 만든 좌우 여백 */
 }
 
-header {
+header.main {
     position: absolute; z-index: 3;
     width: 100%;
 }
     header .topset .ticket {
         display: flex; align-items: center; gap: 10px;
-        margin-top: 50px; font-size: clamp(1.6rem, 1vw, 1.8rem); color: #fff; padding: 0 2.343vw;
+        margin-top: 50px; font-size: clamp(1.6rem, 1vw, 1.8rem); color: #222; padding: 0 2.343vw;
+    }
+    header .topset .ticket .icon_box {
+        background: url('../images/icon_tecket_b.png'); width: 24px; height: 24px;
+    }
+    header.main .topset .ticket .icon_box {
+        background: url('../images/icon_tecket.png'); width: 24px; height: 24px;
     }
     header .topset h1 {
         position: absolute; left: 50%; top: 42px; transform: translateX(-50%);
@@ -50,11 +56,11 @@ header nav {
     header nav .gnb > li.melon span::before {
         content: "";
         position: absolute; left: 71%; top: 14%;
-        width: 3px; height: 3px; background: #fff; border-radius: 50%;
+        width: 3px; height: 3px; background: #222; border-radius: 50%;
     }
     header nav .gnb > li > a {
         display: flex;
-        color: #fff; padding: 2rem 2.343vw;
+        color: #222; padding: 2rem 2.343vw;
     }
     header nav .gnb > li > a span {
         position: relative;
@@ -77,6 +83,7 @@ header nav {
         header nav .gnb li .lnb li a:hover {
             font-weight: 600;
         }
+    
 
 header nav .gnb2 {
     display: flex;
@@ -85,11 +92,22 @@ header nav .gnb2 {
         font-size: 1.6rem;
     }
     header nav .gnb2 > li.usebuy a {
-        color: #81ffa6;
+        color: var(--maincolor1);
     }
     header nav .gnb2 > li > a {
-        color: #fff; padding: 2rem 1.3vw;
+        color: #222; padding: 2rem 1.3vw;
     }
+
+header.main nav .gnb > li > a {color: #fff;}
+    header.main nav .gnb > li.melon span::before {background: #fff;}
+    header.main .topset .ticket {color: #fff;}
+    header.main nav .gnb2 > li > a {
+        color: #fff;
+    }
+    header.main nav .gnb2 > li.usebuy a {
+        color: #81ffa6;
+    }
+
 
 #hero {
     height: 100vh; overflow: hidden; text-align: center;
@@ -463,19 +481,110 @@ footer span {
 
 .container {}
 
-.floating_menu {
+body.main .floating_menu {
     position: fixed; right: 50px; top: 50%; transform: translateY(-50%); gap: 10px;
     display: flex; flex-direction: column;
 }
-.floating_menu a {
+body.main .floating_menu a {
     display: flex; justify-content: center; align-items: center;
     width: 50px; height: 50px; font-size: 2.4rem; font-weight: 500; border-radius: 10px; background: #fff;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
-.floating_menu a.on {
+body.main .floating_menu a.on {
     background: var(--maincolor1); color: #fff;
 }
 
+
+
+
+
+
+/* subpage */
+#hero_sub {
+    width: 100%; height: 250px; background: #000;
+}
+
+#section_box_sub {
+    padding-bottom: 120px;
+}
+
+
+
+
+
+/* login page */
+.login_page {
+    
+}
+    .login_page h2 {
+        font-size: 40px; border-bottom: 1px solid #000; line-height: 143px; margin-top: 70px; text-align: center;
+    }
+    .login_page .input_wrap {
+        max-width: 450px; margin: 0 auto; margin-top: 123px; font-size: 16px;
+    }
+        .login_page .input_wrap input[type="text"],
+        .login_page .input_wrap input[type="password"] {
+            width: 100%; height: 50px; color: #8a8a8a; border: 2px solid var(--maincolor1); border-radius: 50px; font-size: 16px; margin-bottom: 20px;
+            text-indent: 20px; /* 들여쓰기 */
+        }
+        .login_page .input_wrap input:focus {
+            outline: none; border: 2px solid var(--maincolor1);
+        }
+        /* css 속성 뒤에 [속성]을 붙여 조건 지정 */
+        .input_wrap .check_wrap {
+            display: flex; align-items: center; gap: 8px; padding-left: 20px;
+        }
+        .login_page .input_wrap input[type="checkbox"] {
+            width: 20px; height: 20px;
+        }
+        .input_wrap .btns_box {
+            display: flex; justify-content: center; margin: 30px 0;
+        }
+        .input_wrap button {
+            width: 182px; height: 49px; border-radius: 50px; background: #414141; color: #fff; font-size: 16px; border: 0px solid #000; cursor: pointer;
+        }
+        .input_wrap .link_box {
+            display: flex; justify-content: center; gap: 30px; 
+        }
+        .input_wrap .link_box a {
+            color: #8a8a8a;
+        }
+        .input_wrap .link_box a:hover {
+            text-decoration: underline;
+        }
+        label {
+            display: flex; align-items: center; gap: 10px;
+        }
+        .input_wrap label .checkbox_custom {
+            position: relative;
+            display: inline-block;
+            width: 20px; height: 20px; border: 1px solid #777;
+        }
+        .input_wrap #remember_id {
+            display: none;
+        }
+        .input_wrap #remember_id ~ label .checkbox_custom::before {
+            content: "";
+            position: absolute; left: 50%; top: 40%; transform: translate(-50%,-50%) rotate(45deg);
+            width: 0px; height: 0px; border: 0 solid #000; transition: .1s; opacity: 0;
+        }
+        /* ~ : 형제 선택자 */
+        /* + : 직계 동생 */
+        .input_wrap #remember_id:checked ~ label .checkbox_custom::before {
+            width: 8px; height: 8px; border: 2px solid #000; border-left: 0; border-top: 0; opacity: 1;
+        }
+        .input_wrap .check_wrap label {
+            cursor: pointer;
+            user-select: none;
+            /* 드래그 안 되게 */
+        }
+
+        .input_idpw li {
+            position: relative;
+        }
+        .input_idpw li .btn_view_pw {
+            position: absolute; top: 50%; right: 20px; transform: translateY(-90%);
+        }
 
 
 
