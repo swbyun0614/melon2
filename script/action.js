@@ -1,4 +1,4 @@
-$('header').load('/include/header.html', function(){
+$('header').load('include/header.html', function(){
     gnbAction();
     
     $('.hamburger').click(function(){
