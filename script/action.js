@@ -110,8 +110,10 @@ $(window).scroll(function(){
     
     if(scrT >= sec1Top){
         $('.floating_menu a').eq(0).addClass('on').siblings().removeClass('on')
+        $('.floating_menu').fadeIn().css({display: 'flex'})
     } else {
         $('.floating_menu a').removeClass('on')
+        $('.floating_menu').fadeOut()
     }
     if(scrT >= sec2Top){
         $('.floating_menu a').eq(1).addClass('on').siblings().removeClass('on')
@@ -148,3 +150,44 @@ $('.btn_view_pw').click(function(){
         $(this).find('img').attr('src','images/visibility_off.svg');
     }
 })
+
+/* 슬라이더 */
+// let heroW = $('#hero').css('width'); 도 width를 측정하는 것은 가능하지만 숫자 계산할 때에는 parseInt(숫자만 남김) 함수를 쓰지 않는 이상 단위가 붙어서 오류가 남!
+let heroW = $('#hero').width();
+console.log(heroW)
+let heroLength = $('#hero li').length;
+let time = 4500;
+let autoClick
+
+$('#hero ul').width(heroW * heroLength);
+$('#hero ul li').width(heroW);
+
+$('.btns_box .next').click(function(){
+    clearTimeout(autoClick);
+
+    $('#hero ul').stop().animate({left:-heroW}, function(){
+        $('#hero li').eq(0).appendTo(this); /* appendTo: 막내 자식으로 보냄 */
+        $(this).css({left:0});
+    })
+
+    /* 클릭하면 자동으로 넘어가게 하기 위함 */
+    autoClick = setTimeout(function(){
+        $('.next').click()
+    }, time)
+})
+$('.btns_box .prev').click(function(){
+    clearTimeout(autoClick);
+
+    $('#hero li').eq(2).prependTo('#hero ul'); /* prependTo: 첫째 자식으로 보냄 */
+    $('#hero ul').css({left:-heroW});
+    $('#hero ul').stop().animate({left: 0});
+
+    autoClick = setTimeout(function(){
+        $('.next').click()
+    }, time)
+})
+
+/* 다음 버튼을 한 번 누르도록 예약을 걸음 */
+autoClick = setTimeout(function(){
+    $('.next').click()
+}, time)
