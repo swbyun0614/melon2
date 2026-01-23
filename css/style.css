@@ -24,7 +24,7 @@ body {
 
 
 header.main {
-    position: absolute; z-index: 3;
+    position: absolute; z-index: 100;
 }
 
 header {
