@@ -92,51 +92,12 @@ function autoRefactoring(){
 }
 
 
-$(window).scroll(function(){
-    let scrT = $(window).scrollTop();
-    let sec1Top = $('#section1').offset().top;
-    let sec2Top = $('#section2').offset().top;
-    let sec3Top = $('#section3').offset().top;
-    let winH = $(window).height();
-    let opa = (scrT-sec2Top+(winH*0.7))*0.002;
-    /* 0.7: 섹션 2가 화면 하단에서 70% 정도 올라왔을 때부터 투명도 값이 증가, 0.002: 숫자가 너무 빨리 커지지 않도록 속도를 조절 */
-    opa = Math.min(opa,0.7)
-    /* 계산된 값이 아무리 커져도 0.7(불투명도 70%)을 넘지 않도록 제한 */
-
-    if(scrT > sec2Top - winH*0.8){
-        $('#section2 .overlay').css({ background: 'rgba(0,0,0,'+opa+')'})
-        /* 스크롤 위치가 섹션 2가 보이기 직전(화면 높이의 80% 지점)을 지나면, 미리 계산한 opa 값을 사용해 섹션 2 내부의 .overlay 투명도를 조절 (opa*100%) */
-    }
-    
-    if(scrT >= sec1Top){
-        $('.floating_menu a').eq(0).addClass('on').siblings().removeClass('on')
-        $('.floating_menu').fadeIn().css({display: 'flex'})
-    } else {
-        $('.floating_menu a').removeClass('on')
-        $('.floating_menu').fadeOut()
-    }
-    if(scrT >= sec2Top){
-        $('.floating_menu a').eq(1).addClass('on').siblings().removeClass('on')
-    }
-    if(scrT >= sec3Top){
-        $('.floating_menu a').eq(2).addClass('on').siblings().removeClass('on')
-    }
-});
-
-
 $('.btn_top').click(function(){
     $('html, body').animate({scrollTop:0}, 800)
     // 보통 html과 body를 같이 씀
 });
 /* TOP 버튼 (1초 동안 올라감) */
 
-$('.floating_menu a').click(function(){
-    let aIndex = $(this).index()+1; /* index: 값을 구하는 함수. 여기서는 0, 1, 2 */
-    let sTop = $('#section'+aIndex).offset().top;
-
-    $('.floating_menu a').removeClass();
-    $('html').animate({scrollTop: sTop});
-});
 
 
 $('.btn_view_pw').click(function(){
@@ -154,29 +115,41 @@ $('.btn_view_pw').click(function(){
 /* 슬라이더 */
 // let heroW = $('#hero').css('width'); 도 width를 측정하는 것은 가능하지만 숫자 계산할 때에는 parseInt(숫자만 남김) 함수를 쓰지 않는 이상 단위가 붙어서 오류가 남!
 let heroW = $('#hero').width();
-console.log(heroW)
-let heroLength = $('#hero li').length;
+let heroLength = $('#hero li').length; /* 개수 */
 let time = 4500;
-let autoClick
+let autoClick;
 
 $('#hero ul').width(heroW * heroLength);
 $('#hero ul li').width(heroW);
+$('<div class="slideNum"><span class="number">1</span>/<span class="total">'+heroLength+'</span></div>').appendTo('#hero');
 
+let numInt = 1;
 $('.btns_box .next').click(function(){
     clearTimeout(autoClick);
+    numInt++;
+    if(numInt > heroLength){
+        numInt = 1;
+    };
 
     $('#hero ul').stop().animate({left:-heroW}, function(){
         $('#hero li').eq(0).appendTo(this); /* appendTo: 막내 자식으로 보냄 */
         $(this).css({left:0});
-    })
+    });
 
     /* 클릭하면 자동으로 넘어가게 하기 위함 */
     autoClick = setTimeout(function(){
-        $('.next').click()
-    }, time)
+        $('.next').click();
+    }, time);
+
+    $('#hero .number').text(numInt);
+
 })
 $('.btns_box .prev').click(function(){
     clearTimeout(autoClick);
+    numInt--;
+    if(numInt < 1){
+        numInt = heroLength;
+    };
 
     $('#hero li').eq(2).prependTo('#hero ul'); /* prependTo: 첫째 자식으로 보냄 */
     $('#hero ul').css({left:-heroW});
@@ -184,10 +157,61 @@ $('.btns_box .prev').click(function(){
 
     autoClick = setTimeout(function(){
         $('.next').click()
-    }, time)
+    }, time);
+
+    $('#hero .number').text(numInt);
 })
 
 /* 다음 버튼을 한 번 누르도록 예약을 걸음 */
 autoClick = setTimeout(function(){
     $('.next').click()
 }, time)
+
+
+let secLength = $('#section_box section').length;
+$('body').append('<div class="floating_menu"></div>');
+
+for(let i=0; i<3; i++){
+    $('.floating_menu').append(`<a href="#">${i+1}</a>`)
+};
+
+let isScrolling = false;
+
+$('.floating_menu a').click(function(){
+    isScrolling = true;
+
+    let aIndex = $(this).index()+1; /* index: 값을 구하는 함수. 여기서는 0, 1, 2 */
+    let sTop = $('#section'+aIndex).offset().top;
+
+    $('.floating_menu a').removeClass();
+    $('html').animate({scrollTop: sTop}, function(){
+        isScrolling = false;
+    });
+});
+
+$(window).scroll(function(){
+    if(isScrolling == true){return};
+
+    let scrT = $(window).scrollTop();
+    let sec1Top = $('#section1').offset().top;
+    let sec2Top = $('#section2').offset().top;
+    let sec3Top = $('#section3').offset().top;
+    let winH = $(window).height();
+    let opa = (scrT-sec2Top+(winH*0.7))*0.002;
+    /* 0.7: 섹션 2가 화면 하단에서 70% 정도 올라왔을 때부터 투명도 값이 증가, 0.002: 숫자가 너무 빨리 커지지 않도록 속도를 조절 */
+    opa = Math.min(opa,0.7)
+    /* 계산된 값이 아무리 커져도 0.7(불투명도 70%)을 넘지 않도록 제한 */
+
+    if(scrT > sec2Top - winH*0.8){
+        $('#section2 .overlay').css({ background: 'rgba(0,0,0,'+opa+')'})
+        /* 스크롤 위치가 섹션 2가 보이기 직전(화면 높이의 80% 지점)을 지나면, 미리 계산한 opa 값을 사용해 섹션 2 내부의 .overlay 투명도를 조절 (opa*100%) */
+    }
+    
+    if(scrT >= sec3Top){
+        $('.floating_menu a').eq(2).addClass('on').siblings().removeClass('on');
+    } else if(scrT >= sec2Top){
+        $('.floating_menu a').eq(1).addClass('on').siblings().removeClass('on');
+    } else if(scrT >= sec1Top){
+        $('.floating_menu a').eq(0).addClass('on').siblings().removeClass('on');
+    }
+});
