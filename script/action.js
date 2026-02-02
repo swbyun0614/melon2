@@ -184,6 +184,7 @@ $('.floating_menu a').click(function(){
     let sTop = $('#section'+aIndex).offset().top;
 
     $('.floating_menu a').removeClass();
+    $('.floating_menu a').eq(aIndex-1).addClass('on'); /* aIndex: 번호 */
     $('html').animate({scrollTop: sTop}, function(){
         isScrolling = false;
     });
@@ -205,7 +206,7 @@ $(window).scroll(function(){
     if(scrT > sec2Top - winH*0.8){
         $('#section2 .overlay').css({ background: 'rgba(0,0,0,'+opa+')'})
         /* 스크롤 위치가 섹션 2가 보이기 직전(화면 높이의 80% 지점)을 지나면, 미리 계산한 opa 값을 사용해 섹션 2 내부의 .overlay 투명도를 조절 (opa*100%) */
-    }
+    };
     
     if(scrT >= sec3Top){
         $('.floating_menu a').eq(2).addClass('on').siblings().removeClass('on');
@@ -213,5 +214,8 @@ $(window).scroll(function(){
         $('.floating_menu a').eq(1).addClass('on').siblings().removeClass('on');
     } else if(scrT >= sec1Top){
         $('.floating_menu a').eq(0).addClass('on').siblings().removeClass('on');
-    }
+        $('.floating_menu').addClass('on');
+    } else {
+        $('.floating_menu').removeClass('on');
+    };
 });
