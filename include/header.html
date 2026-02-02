@@ -13,7 +13,7 @@
         <h1 class="mo"><a href="#">
             <img src="images/img_melon_logo@3x.png" alt="멜론로고">
         </a></h1>
-        <ul class="gnb">
+        <!-- <ul class="gnb">
             <li>
                 <a href="#"><span>멜론차트</span></a>
                 <ul class="lnb">
@@ -48,7 +48,10 @@
             <li>
                 <a href="#"><span>뮤직웨이브</span></a>
             </li>
-        </ul>
+        </ul> -->
+        
+        <ul class="gnb"></ul>
+        
         <ul class="gnb2">
             <li class="usebuy"><a href="#">이용권구매</a></li>
             <li><a href="login.html?merong=1">로그인</a></li>
@@ -60,3 +63,34 @@
         <span></span>
     </div>
 </div>
+
+<script> /* append: 자식으로 추가 */
+        let gnbArray = ['멜론차트', 'Melon', '스타포스트', '매거진', '뮤직어워드', '뮤직웨이브'];
+        let lnbArray = [
+            ['TOP 100', 'HOT 100', '일간', '주간', '월간', '시대'],
+            ['TOP 100', 'HOT 100'],
+            ['일간', '주간'],
+            ['월간', '시대'],
+            ['시대'],
+            []
+        ];
+        for(let i=0; i<gnbArray.length; i++){
+            $('.gnb').append(`
+                <li>
+                    <a href="#"><span>${gnbArray[i]}</span></a>
+                </li>
+            `)
+
+            if(lnbArray[i].length > 0){
+                $('.gnb > li').eq(i).append('<ul class="lnb"></ul>')
+                for(let j=0; j<lnbArray[i].length; j++){
+                    $('.gnb > li').eq(i).find('.lnb').append(`
+                        <li>
+                            <a href="#">${lnbArray[i][j]}</a>
+                        </li>
+                    `)
+                };
+            }
+            $('.gnb > li').eq(1).addClass('melon')
+        };
+    </script>
