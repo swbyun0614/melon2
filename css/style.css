@@ -156,6 +156,12 @@ header.main nav .gnb > li > a {color: #fff;}
 #hero iframe {
         width: 100%; height: 100vh; object-fit: cover;
     }
+#hero .slideNum {
+    position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%);
+    font-size: 22px; color: #fff; font-weight: 600;
+}
+#hero .slideNum .number {}
+#hero .slideNum .total {}
 
 #section_box #section1 {
     padding: 200px 0;
