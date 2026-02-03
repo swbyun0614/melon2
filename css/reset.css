@@ -2,6 +2,6 @@
 li {list-style: none;}
 a {text-decoration: none; color: #333;}
 
-html, body {height: 100%;}
+html, body {height: 100%; word-break: keep-all;}
 table {border-collapse: collapse;}
 img {vertical-align: text-bottom;}
