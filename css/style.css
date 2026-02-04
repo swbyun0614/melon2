@@ -511,17 +511,14 @@ footer h1 img {
     width: 130px; margin-top: 19px;
 }
 footer ul {
-    display: flex; flex-wrap: wrap;
+    display: flex; flex-wrap: wrap; gap: 8px 50px;
 }
 footer ul li a {
     display: block;
-    color: #fff; padding: 5px 2.5rem; font-size: 1.6rem;
+    color: #fff; padding: 5px 0; font-size: 1.6rem;
 }
 footer ul li a:hover {
     text-decoration: underline; font-weight: 500;
-}
-footer ul li:first-child a {
-    padding: 5px 2.5rem 5px 0;
 }
 footer span {
     display: block;
@@ -532,7 +529,7 @@ footer span {
 
 
 body.main .floating_menu {
-    position: fixed; right: 50px; top: 50%; transform: translateY(-50%); gap: 10px;
+    position: fixed; right: 2.6vw; top: 50%; transform: translateY(-50%); gap: 10px;
     display: flex; flex-direction: column;
 }
 .floating_menu {
@@ -671,16 +668,33 @@ body.main .floating_menu a.on {
     #section_box #section2 {padding: 150px 0;}
     #section_box #section3 {padding: 150px 0;}
 
-    #section_box #section1 .content {}
     #section_box #section1 .content .bigimg {
         width: 80%;
     }
+    #section_box #section1 .bigimg .textinfo {
+        right: auto; bottom: 20px; top: auto; left: 50%; transform: translateX(-50%);
+        width: 80%; margin-left: 0;
+    }
+    #section_box #section1 .bigimg::before {
+        width: 150%; left: 0; transform: rotate(-10deg);
+    }
+    #section_box #section1 .bigimg .textinfo .info {
+        display: none;
+    }
+    
     #section_box #section1 .content .smallimg {
         width: 20%; gap: 0px;
     }
     #section_box #section1 .content .smallimg > li {
         width: 100%; height: 20%;
     }
+    #section_box #section1 .smallimg > li .textinfo .singer {
+        display: none;
+    }
+    #section_box #section1 .smallimg > li .textinfo .btn_play {
+        top: 63%;
+    }
+
     .floating_menu {
         display: none;
     }
@@ -826,24 +840,36 @@ body.main .floating_menu a.on {
     #section_box #section2 {padding: 100px 0;}
     #section_box #section3 {padding: 100px 0;}
 
+    #section_box #section1 .content {
+        flex-direction: column; align-items: center;
+    }
     #section_box #section1 .bigimg::before {
         width: 150%; left: 0; transform: rotate(-10deg);
     }
     #section_box #section1 .bigimg .textinfo {
         right: auto; bottom: 20px; top: auto; left: 50%; transform: translateX(-50%);
-        width: 80%; margin-left: 0;
+        width: 70%; margin-left: 0;
     }
     #section_box #section1 .bigimg .textinfo .info {
         display: none;
     }
-    #section_box #section1 .smallimg > li .textinfo h3 {
+    #section_box #section1 .bigimg .imgbox .bigimg2 {
         display: none;
     }
-    #section_box #section1 .smallimg > li .textinfo .singer {
-        display: none;
+    #section_box #section1 .content .smallimg {
+        width: 80%; gap: 4.9vw;
+    }
+    #section_box #section1 .content .smallimg > li {
+        width: 40%;
+    }
+    #section_box #section1 .smallimg > li img {
+        width: 100%;
+    }
+    #section_box #section1 .smallimg > li .textinfo h3 {
     }
     #section_box #section1 .smallimg > li .textinfo .btn_play {
-        top: 40%;
+        top: 62%;
+        width: 35%;
     }
 
     #section2 .container .textbox {
@@ -861,10 +887,10 @@ body.main .floating_menu a.on {
     }
     #section3 .container .content li .article_box {
         align-items: start;
-        width: calc(100% - 140px); flex-direction: column;
+        width: 45.27vw; flex-direction: column;
     }
     #section3 .container .content li .article_box .thumb {
-        position: absolute; left: 0;
+        position: absolute; left: 12.43vw;
     }
     #section3 .container .content li .icon_box {
         justify-content: space-around;
