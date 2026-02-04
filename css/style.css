@@ -124,10 +124,12 @@ header.main nav .gnb > li > a {color: #fff;}
         height: 100%;
     }
     #hero ul li {
+        position: relative;
+        height: 100%; overflow: hidden;
     }
 
 #hero > span {
-    position: absolute; top: 49%; left: 50%; transform: translate(-50%, -50%);
+    position: absolute; top: 49%; left: 50%; transform: translate(-50%, -50%); z-index: 10;
     font-size: 50px; font-weight: 500; color: #fff; text-wrap: nowrap;
 }
     #hero > span > span {
@@ -150,12 +152,20 @@ header.main nav .gnb > li > a {color: #fff;}
 }
 
 #hero video {
-    width: 100%; height: 100%; object-fit: cover;
+    width: 100%; height: 100%; object-fit: cover; 
     border-bottom: 1px solid #fff; box-sizing: border-box;
 }
 #hero iframe {
-        width: 100%; height: 100vh; object-fit: cover;
-    }
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+    
+    /* 16:9 비율을 유지하면서 영역을 덮기 위한 수식 */
+    width: 100vw; 
+    height: 56.25vw; /* 100 * 9 / 16 */
+    
+    min-height: 100vh; /* 세로가 길어질 때를 대비 */
+    min-width: 177.77vh; /* 가로가 좁아질 때를 대비 (100 * 16 / 9) */
+    pointer-events: none; /* 마우스 오버 시 UI 방해 금지 */
+}
 #hero .slideNum {
     position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%);
     font-size: 22px; color: #fff; font-weight: 600;
