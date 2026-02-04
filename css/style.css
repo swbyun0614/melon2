@@ -39,7 +39,13 @@ header {
         background: url('../images/icon_tecket_b.png'); width: 24px; height: 24px;
     }
     header.main .topset .ticket .icon_box {
-        background: url('../images/icon_tecket.png'); width: 24px; height: 24px;
+        width: 24px; height: 24px;
+    }
+    header .topset .ticket_w {
+        display: block;
+    }
+    header .topset .ticket_b {
+        display: none;
     }
     header .topset h1 {
         position: absolute; left: 50%; top: 42px; transform: translateX(-50%);
@@ -556,8 +562,21 @@ body.main .floating_menu a.on {
 
 
 /* subpage */
+header.sub {
+    position: relative;
+}
+    header.sub .topset h1 {
+        position: absolute; left: 50%; top: -10px; transform: translateX(-50%);
+    }
+    header.sub .topset .ticket_b {
+        display: block;
+    }
+    header.sub .topset .ticket_w {
+        display: none;
+    }
+
 #hero_sub {
-    width: 100%; height: 250px; background: #000;
+    width: 100%; height: 250px; background-image: linear-gradient(to bottom right, #63ED86 40%, #0EE2C9 80%);
 }
 
 #section_box_sub {
@@ -572,8 +591,8 @@ body.main .floating_menu a.on {
 .login_page {
     
 }
-    .login_page h2 {
-        font-size: 40px; border-bottom: 1px solid #000; line-height: 143px; margin-top: 70px; text-align: center;
+    #hero_sub h2 {
+        font-size: 40px; border-bottom: 1px solid #fff; line-height: 143px; text-align: center; color: #fff; padding-top: 70px;
     }
     .login_page .input_wrap {
         max-width: 450px; margin: 0 auto; margin-top: 123px; font-size: 16px;
