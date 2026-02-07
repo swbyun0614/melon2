@@ -66,28 +66,76 @@
 </div>
 
 <script> /* append: 자식으로 추가 */
-        let gnbArray = ['멜론차트', 'Melon', '스타포스트', '매거진', '뮤직어워드', '뮤직웨이브'];
-        let lnbArray = [
-            ['TOP 100', 'HOT 100', '일간', '주간', '월간', '시대'],
-            ['멜론DJ', '멜론TV'],
-            ['NOW', '아티스트 랭킹', '마이 랭킹'],
-            ['연재중 매거진', '완결된 매거진', '에디션m', '한국 대중음악 명반 100', 'K-POP 명곡 100'],
-            [],
-            []
+        // let gnbArray = ['멜론차트', 'Melon', '스타포스트', '매거진', '뮤직어워드', '뮤직웨이브'];
+        // let lnbArray = [
+        //     ['TOP 100', 'HOT 100', '일간', '주간', '월간', '시대'],
+        //     ['멜론DJ', '멜론TV'],
+        //     ['NOW', '아티스트 랭킹', '마이 랭킹'],
+        //     ['연재중 매거진', '완결된 매거진', '에디션m', '한국 대중음악 명반 100', 'K-POP 명곡 100'],
+        //     [],
+        //     []
+        // ];
+        // for(let i=0; i<gnbArray.length; i++){
+        //     $('.gnb').append(`
+        //         <li>
+        //             <a href="#"><span>${gnbArray[i]}</span></a>
+        //         </li>
+        //     `)
+
+        //     if(lnbArray[i].length > 0){
+        //         $('.gnb > li').eq(i).append('<ul class="lnb"></ul>')
+        //         for(let j=0; j<lnbArray[i].length; j++){
+        //             $('.gnb > li').eq(i).find('.lnb').append(`
+        //                 <li>
+        //                     <a href="#">${lnbArray[i][j]}</a>
+        //                 </li>
+        //             `)
+        //         };
+        //     }
+        //     $('.gnb > li').eq(1).addClass('melon')
+        // };
+
+        /* 객체 방식 */
+        let menuData = [
+            {
+                title: '멜론차트',
+                lnb: ['TOP 100', 'HOT 100', '일간', '주간', '월간', '시대']
+            }, 
+            {
+                title: 'Melon',
+                lnb: ['멜론DJ', '멜론TV']
+            }, 
+            {
+                title: '스타포스트',
+                lnb: ['NOW', '아티스트 랭킹', '마이 랭킹']
+            }, 
+            {
+                title: '매거진',
+                lnb: ['연재중 매거진', '완결된 매거진', '에디션m', '한국 대중음악 명반 100', 'K-POP 명곡 100']
+            }, 
+            {
+                title: '뮤직어워드',
+                lnb: []
+            }, 
+            {
+                title: '뮤직웨이브',
+                lnb: []
+            }
         ];
-        for(let i=0; i<gnbArray.length; i++){
+
+        for(let i=0; i<menuData.length; i++){
             $('.gnb').append(`
                 <li>
-                    <a href="#"><span>${gnbArray[i]}</span></a>
+                    <a href="#"><span>${menuData[i].title}</span></a>
                 </li>
             `)
 
-            if(lnbArray[i].length > 0){
+            if(menuData[i].lnb.length > 0){
                 $('.gnb > li').eq(i).append('<ul class="lnb"></ul>')
-                for(let j=0; j<lnbArray[i].length; j++){
+                for(let j=0; j<menuData[i].lnb.length; j++){
                     $('.gnb > li').eq(i).find('.lnb').append(`
                         <li>
-                            <a href="#">${lnbArray[i][j]}</a>
+                            <a href="#">${menuData[i].lnb[j]}</a>
                         </li>
                     `)
                 };
